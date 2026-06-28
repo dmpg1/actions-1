@@ -1,0 +1,25 @@
+name: Generate ASCII Artwork
+
+on: push 
+
+jobs:
+  ascii_job:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v7
+
+      - name: Install cowsay 
+        run: sudo apt install cowsay -y
+
+      - name: Run tux say
+        run: cowsay -f tux "Я пингвин Tux!" >> tux.txt
+
+      - name: Test file Exists 
+        run: grep -i "tux" tux.txt
+
+      - name: Read File
+        run: cat tux.txt
+
+      - name: List Repo Files
+        run: ls -ltra 
