@@ -10,10 +10,18 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Welcome message
-        run: echo "My firs GitHub Actions job"
-          
-      - name: List file
-        run: ls
+        run: |
+          echo "My firs GitHub Actions job"
+          ls -ltra
+          cat README.md
 
-      - name: Read File
-        run: cat README.md
+      - name: Generate ASCII Artwork
+        run: cowsay -f tux "Я пингвин Tux!" >> tux.txt
+
+
+          
+      # - name: List file
+      #   run: ls
+
+      # - name: Read File
+      #   run: cat README.md
