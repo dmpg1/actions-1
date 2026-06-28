@@ -9,17 +9,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v7
 
-      - name: Install cowsay 
-        run: sudo apt install cowsay -y
+      - name: Files List 
+        run: ls -ltra
 
-      - name: Run tux say
-        run: cowsay -f tux "Я пингвин Tux!" >> tux.txt
-
-      - name: Test file Exists 
-        run: grep -i "tux" tux.txt
-
-      - name: Read File
-        run: cat tux.txt
-
-      - name: List Repo Files
-        run: ls -ltra 
+      - name: Shell script execution
+        run: |
+          chmod +x ascii_script.sh
+          ./ascii_script.sh
+          
