@@ -6,6 +6,9 @@ jobs:
     firs_job:
       runs-on: ubuntu-latest
       steps:
+      - name: Checkout repo
+        uses: actions/checkout@v7
+
       - name: Welcome message
         run: echo "My firs GitHub Actions job"
           
