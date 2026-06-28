@@ -8,10 +8,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v7
-
-      - name: check dir
-        run: pwd
-
+      
       - name: Files List 
         run: ls -ltra
 
