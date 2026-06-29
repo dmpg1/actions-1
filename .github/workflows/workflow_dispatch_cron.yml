@@ -30,6 +30,6 @@ jobs:
     steps:
       - name: Docker run
         run: | 
-        echo docker run -d -p 8080:80 $CONTAINER_REGISTRY/{{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
-        sleep 600
+          echo docker run -d -p 8080:80 $CONTAINER_REGISTRY/{{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
+          sleep 600
 
