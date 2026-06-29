@@ -1,0 +1,34 @@
+name: Exploring variables and secrets
+
+on:
+#  push
+  workflow_dispatch:
+  schedule:
+    - cron: "* * * * *"
+
+env:
+  CONTAINER_REGISTRY: docker.io
+  IMAGE_NAME: docker pull dmnn155/devops-hello-app:v1
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Docker Build
+        run: echo docker build -t $CONTAINER_REGISTRY/{{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
+
+      - name: Docker login
+        run: echo docker login --username={{ vars.DOCKER_USERNAME }} --password={{ secrets.DOCKER_PASS }}
+
+      - name: Docker Publish
+        run: echo docker push $CONTAINER_REGISTRY/{{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
+
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Docker run
+        run: echo docker run -d -p 8080:80 $CONTAINER_REGISTRY/{{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
+
+
